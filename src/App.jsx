@@ -4,7 +4,7 @@ function App() {
     return (
         <AppDetails>
             <div className="card card-page">
-                <a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Voltar ao Inicio</i></a>
+                <a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Back To Home</i></a>
             </div>
 
             <div className="overlay" />
