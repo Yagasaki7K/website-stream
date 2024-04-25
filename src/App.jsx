@@ -6,7 +6,7 @@ function App() {
             <div className="overflow" />
 
             <div className="player">
-                <iframe id="twitchPlayer" src={"https://player.twitch.tv/?channel=todo_mundo_ama_br&muted=true&parent=localhost"} allowfullscreen autoPlay />
+                <iframe id="twitchPlayer" src={"https://player.twitch.tv/?channel=Yagasaki7K&muted=true&parent=localhost"} allowfullscreen autoPlay />
             </div>
 
             <div className="footer">
@@ -41,13 +41,10 @@ const AppDetails = styled.div`
             height: 50rem;
             border: none;
             border-radius: 15px;
+            margin-top: 1rem;
 
             @media (max-width: 1024px) {
                 height: 28rem;
-            }
-
-            @media (max-width: 768px) {
-                margin-top: 1rem;
             }
         }
     }
