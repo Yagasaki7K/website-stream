@@ -3,7 +3,11 @@ import styled from "styled-components"
 function App() {
     return (
         <AppDetails>
-            <div className="overflow" />
+            <div className="card card-page">
+                <a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Voltar ao Inicio</i></a>
+            </div>
+
+            <div className="overlay" />
 
             <div className="player">
                 <iframe id="twitchPlayer" src={"https://player.twitch.tv/?channel=Yagasaki7K&muted=true&parent=localhost"} allowfullscreen autoPlay />
@@ -30,6 +34,33 @@ export default App
 const AppDetails = styled.div`
     display: flex;
     flex-direction: column;
+
+    .card {
+        margin-top: 1rem;
+        text-align: right;
+        margin-right: 7rem;
+
+        @media (max-width: 1024px) {
+            margin-right: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            margin-right: 1.5rem;
+        }
+
+        .backToHome {
+            text-decoration: none;
+            color: var(--red);
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            i {
+                font-style: normal;
+            }
+        }
+    }
 
     .player {
         display: flex;
