@@ -27,7 +27,12 @@ function App() {
     return (
         <AppDetails>
             <div className="card card-page">
-                <p><a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Back To Home</i></a> - <button onClick={() => setIsChat(!isChat)}>Show Chat</button></p>
+                <p>
+                    <a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Back To Home</i></a> -
+                    {
+                        windowSize && windowSize.width > 1024 ? <button onClick={() => setIsChat(!isChat)}>Show Chat</button> : null
+                    }
+                </p>
             </div>
 
             <div className="overlay" />
