@@ -1,16 +1,44 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components"
 
 function App() {
+    const [isChat, setIsChat] = useState(false)
+    const [windowSize, setWindowSize] = useState({
+        width: undefined,
+        height: undefined,
+    })
+
+    useEffect(() => {
+        function handleResize() {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        }
+
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize);
+            handleResize();
+
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, []);
+
     return (
         <AppDetails>
             <div className="card card-page">
-                <a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Back To Home</i></a>
+                <p><a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Back To Home</i></a> - <button onClick={() => setIsChat(!isChat)}>Show Chat</button></p>
             </div>
 
             <div className="overlay" />
 
             <div className="player">
-                <iframe id="twitchPlayer" src={"https://player.twitch.tv/?channel=Yagasaki7K&muted=true&parent=localhost"} allowfullscreen autoPlay />
+                <iframe id="twitchPlayer" src={"https://player.twitch.tv/?channel=Yagasaki7K&muted=true&parent=stream.yagasaki.dev"} allowfullscreen autoPlay />
+
+                {isChat ?
+                    <iframe id="twitchChat" className="chat" src={"https://www.twitch.tv/embed/yagasaki7k/chat?parent=stream.yagasaki.dev"} allowFullScreen />
+                    : null
+                }
             </div>
 
             <div className="footer">
@@ -60,12 +88,30 @@ const AppDetails = styled.div`
                 font-style: normal;
             }
         }
+
+        button {
+            height: 50px;
+            font-size: 18px;
+            background: var(--red);
+            color: var(--font-light);
+            margin-right: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            outline: none;
+            padding: 10px 20px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: var(--background-alt);
+            }
+        }
     }
 
     .player {
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0 2rem;
 
         iframe {
             width: 90%;
@@ -78,13 +124,24 @@ const AppDetails = styled.div`
                 height: 28rem;
             }
         }
+
+        .chat {
+            width: 20%;
+            height: 50rem;
+            border: none;
+            margin-left: 1rem;
+
+            @media (max-width: 768px) {
+                height: 30rem;
+            }
+        }
     }
 
     .footer {
         display: flex;
         align-items: center;
         text-align: center;
-        padding: 1rem 6rem;
+        padding: 1rem 8rem;
 
         @media (max-width: 1024px) {
             justify-content: center;
@@ -137,6 +194,7 @@ const AppDetails = styled.div`
         justify-content: center;
         align-items: center;
         color: var(--font-light);
+        margin-bottom: 0.5rem;
 
         @media (max-width: 1024px) {
             font-size: 0.8rem;
