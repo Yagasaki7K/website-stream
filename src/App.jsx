@@ -28,7 +28,7 @@ function App() {
         <AppDetails>
             <div className="card card-page">
                 <p>
-                    <a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Back To Home</i></a> -
+                    <a className="backToHome" href={'https://yagasaki.dev/'}><i className="uil uil-arrow-left"> Back To Home</i></a>
                     {
                         windowSize && windowSize.width > 1024 ? <button onClick={() => setIsChat(!isChat)}>Show Chat</button> : null
                     }
@@ -84,6 +84,7 @@ const AppDetails = styled.div`
         .backToHome {
             text-decoration: none;
             color: var(--red);
+            margin-right: 1rem;
 
             &:hover {
                 text-decoration: underline;
